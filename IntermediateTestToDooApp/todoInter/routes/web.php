@@ -25,3 +25,4 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/', [TaskController::class,'index']);
+Route::post('/', [TaskController::class,'store']);

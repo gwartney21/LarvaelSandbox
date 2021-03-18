@@ -14,11 +14,20 @@ class TaskController extends Controller
     }
 
     public function index(){
-        return view('welcome');
+        return view('index');
     }
 
-    public function store(){
-        return view('');
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+        ]);
+
+        $request->user()->tasks()->create([
+            'name' => $request->name,
+        ]);
+
+        return redirect('/');
     }
 
     public function destroy(){
